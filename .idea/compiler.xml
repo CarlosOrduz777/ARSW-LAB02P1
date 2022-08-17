@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="primesearch" />
+        <module name="ARSW-LAB02P1" />
       </profile>
     </annotationProcessing>
   </component>

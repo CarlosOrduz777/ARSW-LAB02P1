@@ -19,25 +19,27 @@ public class PrimeFinderThread extends Thread{
 	public void run(){
 
 		for (int i=a;i<=b;i++){
-			if (isPrime(i)){
+			if (isPrime(i)) {
 				primes.add(i);
 				System.out.println(i);
 			}
-			synchronized (this){
-				while (suspend){
-					try{
+			synchronized (this) {
+				while (suspend) {
+					try {
 						this.wait();
-					}catch (InterruptedException e){
+					} catch (InterruptedException e) {
 						System.out.println("Error...");
 					}
-
 				}
 			}
 		}
 		
 		
 	}
-	
+
+
+
+
 	boolean isPrime(int n) {
 	    if (n%2==0) return false;
 	    for(int i=3;i*i<=n;i+=2) {
@@ -57,7 +59,10 @@ public class PrimeFinderThread extends Thread{
 
 	public void resumeThread(){
 		setSuspend(false);
-		notify();
+		synchronized (this){
+			this.notify();
+		}
+
 	}
 	
 	
